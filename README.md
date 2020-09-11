@@ -1,4 +1,4 @@
-# Session ID - Session Title
+# DAT161 - Introduction to SAP HANA Cloud
 
 ## Description
 

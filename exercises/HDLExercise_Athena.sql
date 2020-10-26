@@ -1,6 +1,9 @@
 -- Create Remote Source 
-CREATE REMOTE SOURCE "ATHENASOURCE" ADAPTER "athena" CONFIGURATION '<?xml version="1.0" encoding="UTF-8"?><ConnectionProperties name="connectionproperties"><PropertyEntry name="adapterversion"></PropertyEntry><PropertyEntry name="connectionmode">Adapter Properties</PropertyEntry><PropertyEntry name="dsn"></PropertyEntry><PropertyEntry name="driver"></PropertyEntry><PropertyEntry name="workgroup">athena_rest_regression</PropertyEntry><PropertyEntry name="region">eu-central-1</PropertyEntry><PropertyEntry name="extraadapterproperties"></PropertyEntry></ConnectionProperties>'
-WITH CREDENTIAL TYPE 'PASSWORD' using 'user=AKIA3E3KHFBLD64DBVXC;password=Y2U8eLUaDItFag+6aHyu/NaRCwGrOHFH2orZhhOu';
+CREATE REMOTE SOURCE "ATHENASOURCE"
+	ADAPTER "athena"
+		CONFIGURATION '<?xml version="1.0" encoding="UTF-8"?><ConnectionProperties name="connectionproperties"><PropertyEntry name="adapterversion">1.0</PropertyEntry><PropertyEntry name="region">eu-central-1</PropertyEntry><PropertyEntry name="workgroup">primary</PropertyEntry></ConnectionProperties>'
+			WITH CREDENTIAL TYPE 'PASSWORD';
+
 
 -- Add AWS certificate and S3 certificate 
 CREATE CERTIFICATE FROM '-----BEGIN CERTIFICATE-----
@@ -25,51 +28,56 @@ L7IezMdeatiDh6GX70k1PncGQVhiv45YuApnP+yz3SFmH8lU+nLMPUxA2IGvd56D
 eruix/U0F47ZEUD0/CwqTRV/p2JdLiXTAAsgGh1o+Re49L2L7ShZ3U0WixeDyLJl
 xy16paq8U4Zt3VekyvggQQto8PT7dL5WXXp59fkdheMtlb71cZBDzI0fmgAKhynp
 VSJYACPq4xJDKVtHCN2MQWplBqjlIapBtJUhlbl90TSrE9atvNziPTnNvT51cKEY
-WQPJIrSPnNVeKtelttQKbfi3QBFGmh95DmK/D5fs4C8fF5Q=-----END CERTIFICATE-----' COMMENT 'AWS';
+WQPJIrSPnNVeKtelttQKbfi3QBFGmh95DmK/D5fs4C8fF5Q=-----END CERTIFICATE-----' 
+COMMENT 'AWS';
 
 CREATE CERTIFICATE FROM '-----BEGIN CERTIFICATE-----
-MIIDdzCCAl+gAwIBAgIEAgAAuTANBgkqhkiG9w0BAQUFADBaMQswCQYDVQQGEwJJ
-RTESMBAGA1UEChMJQmFsdGltb3JlMRMwEQYDVQQLEwpDeWJlclRydXN0MSIwIAYD
-VQQDExlCYWx0aW1vcmUgQ3liZXJUcnVzdCBSb290MB4XDTAwMDUxMjE4NDYwMFoX
-DTI1MDUxMjIzNTkwMFowWjELMAkGA1UEBhMCSUUxEjAQBgNVBAoTCUJhbHRpbW9y
-ZTETMBEGA1UECxMKQ3liZXJUcnVzdDEiMCAGA1UEAxMZQmFsdGltb3JlIEN5YmVy
-VHJ1c3QgUm9vdDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKMEuyKr
-mD1X6CZymrV51Cni4eiVgLGw41uOKymaZN+hXe2wCQVt2yguzmKiYv60iNoS6zjr
-IZ3AQSsBUnuId9Mcj8e6uYi1agnnc+gRQKfRzMpijS3ljwumUNKoUMMo6vWrJYeK
-mpYcqWe4PwzV9/lSEy/CG9VwcPCPwBLKBsua4dnKM3p31vjsufFoREJIE9LAwqSu
-XmD+tqYF/LTdB1kC1FkYmGP1pWPgkAx9XbIGevOF6uvUA65ehD5f/xXtabz5OTZy
-dc93Uk3zyZAsuT3lySNTPx8kmCFcB5kpvcY67Oduhjprl3RjM71oGDHweI12v/ye
-jl0qhqdNkNwnGjkCAwEAAaNFMEMwHQYDVR0OBBYEFOWdWTCCR1jMrPoIVDaGezq1
-BE3wMBIGA1UdEwEB/wQIMAYBAf8CAQMwDgYDVR0PAQH/BAQDAgEGMA0GCSqGSIb3
-DQEBBQUAA4IBAQCFDF2O5G9RaEIFoN27TyclhAO992T9Ldcw46QQF+vaKSm2eT92
-9hkTI7gQCvlYpNRhcL0EYWoSihfVCr3FvDB81ukMJY2GQE/szKN+OMY3EU/t3Wgx
-jkzSswF07r51XgdIGn9w/xZchMB5hbgF/X++ZRGjD8ACtPhSNzkE1akxehi/oCr0
-Epn3o0WC4zxe9Z2etciefC7IpJ5OCBRLbf1wbWsaY71k5h+3zvDyny67G7fyUIhz
-ksLi4xaNmjICq44Y3ekQEe5+NauQrz4wlHrQMz2nZQ/1/I6eYs9HRCwBXbsdtTLS
-R9I4LtD+gdwyah617jzV/OeBHRnDJELqYzmp
------END CERTIFICATE-----' COMMENT 'S3';
+MIIEYzCCA0ugAwIBAgIQAYL4CY6i5ia5GjsnhB+5rzANBgkqhkiG9w0BAQsFADBa
+MQswCQYDVQQGEwJJRTESMBAGA1UEChMJQmFsdGltb3JlMRMwEQYDVQQLEwpDeWJl
+clRydXN0MSIwIAYDVQQDExlCYWx0aW1vcmUgQ3liZXJUcnVzdCBSb290MB4XDTE1
+MTIwODEyMDUwN1oXDTI1MDUxMDEyMDAwMFowZDELMAkGA1UEBhMCVVMxFTATBgNV
+BAoTDERpZ2lDZXJ0IEluYzEZMBcGA1UECxMQd3d3LmRpZ2ljZXJ0LmNvbTEjMCEG
+A1UEAxMaRGlnaUNlcnQgQmFsdGltb3JlIENBLTIgRzIwggEiMA0GCSqGSIb3DQEB
+AQUAA4IBDwAwggEKAoIBAQC75wD+AAFz75uI8FwIdfBccHMf/7V6H40II/3HwRM/
+sSEGvU3M2y24hxkx3tprDcFd0lHVsF5y1PBm1ITykRhBtQkmsgOWBGmVU/oHTz6+
+hjpDK7JZtavRuvRZQHJaZ7bN5lX8CSukmLK/zKkf1L+Hj4Il/UWAqeydjPl0kM8c
++GVQr834RavIL42ONh3e6onNslLZ5QnNNnEr2sbQm8b2pFtbObYfAB8ZpPvTvgzm
++4/dDoDmpOdaxMAvcu6R84Nnyc3KzkqwIIH95HKvCRjnT0LsTSdCTQeg3dUNdfc2
+YMwmVJihiDfwg/etKVkgz7sl4dWe5vOuwQHrtQaJ4gqPAgMBAAGjggEZMIIBFTAd
+BgNVHQ4EFgQUwBKyKHRoRmfpcCV0GgBFWwZ9XEQwHwYDVR0jBBgwFoAU5Z1ZMIJH
+WMys+ghUNoZ7OrUETfAwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMC
+AYYwNAYIKwYBBQUHAQEEKDAmMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5kaWdp
+Y2VydC5jb20wOgYDVR0fBDMwMTAvoC2gK4YpaHR0cDovL2NybDMuZGlnaWNlcnQu
+Y29tL09tbmlyb290MjAyNS5jcmwwPQYDVR0gBDYwNDAyBgRVHSAAMCowKAYIKwYB
+BQUHAgEWHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwDQYJKoZIhvcNAQEL
+BQADggEBAC/iN2bDGs+RVe4pFPpQEL6ZjeIo8XQWB2k7RDA99blJ9Wg2/rcwjang
+B0lCY0ZStWnGm0nyGg9Xxva3vqt1jQ2iqzPkYoVDVKtjlAyjU6DqHeSmpqyVDmV4
+7DOMvpQ+2HCr6sfheM4zlbv7LFjgikCmbUHY2Nmz+S8CxRtwa+I6hXsdGLDRS5rB
+bxcQKegOw+FUllSlkZUIII1pLJ4vP1C0LuVXH6+kc9KhJLsNkP5FEx2noSnYZgvD
+0WyzT7QrhExHkOyL4kGJE7YHRndC/bseF/r/JUuOUFfrjsxOFT+xJd1BDKCcYm1v
+upcHi9nzBhDFKdT3uhaQqNBU4UtJx5g=
+-----END CERTIFICATE-----' 
+COMMENT 'S3';
 
 -- Create PSE HTTPS and get CERTIFICATE_ID for AWS 
 CREATE PSE HTTPS;
 SELECT CERTIFICATE_ID FROM CERTIFICATES WHERE COMMENT = 'AWS';
 
 -- Alter PSE HTTPS to add certificate id 
-ALTER PSE HTTPS ADD CERTIFICATE 155693;
+ALTER PSE HTTPS ADD CERTIFICATE <AWS CERT>;
 
 -- Get CERTIFICATE_ID for S3
 SELECT CERTIFICATE_ID FROM CERTIFICATES WHERE COMMENT = 'S3';
 
 -- Alter PSE HTTPS to add certificate 
-ALTER PSE HTTPS ADD CERTIFICATE 155694;
+ALTER PSE HTTPS ADD CERTIFICATE <S3 CERT>;
 
 -- Set the purpose to REMOTE SOURCE 
 SET PSE HTTPS PURPOSE REMOTE SOURCE;
 
 
---CREATE VIRTUAL TABLE ATHENA_REGION AT "ATHENASOURCE"."NULL"."tpch_sf1000"."region";
-
-
 -- Query 1
+CREATE VIRTUAL TABLE HDLEXERCISE.V_LINEITEM AT "ATHENASOURCE"."NULL"."tpch_sf1000"."lineitem";
 SELECT sum("l_extendedprice" * "l_discount") AS revenue
 FROM HDLExercise.V_LINEITEM
 WHERE "l_shipdate" >= '1994-01-01'
@@ -77,11 +85,12 @@ WHERE "l_shipdate" >= '1994-01-01'
 	AND --ASA date '1994-01-01' + interval '1' year
 	"l_discount" BETWEEN .06 - 0.01 AND .06 + 0.01
 	AND "l_quantity" < 24;
--- Query 2
 
+-- Query 2
 Replicate table in HANA Cloud and note the difference in performance 
-select * from "ATH_nation";
-alter virtual table DBADMIN."ATH_nation" add shared snapshot replica;
-select * from "ATH_nation";
+CREATE VIRTUAL TABLE HDLEXERCISE.ATH_NATION AT "ATHENASOURCE"."NULL"."tpch_sf1000"."nation";
+select * from HDLEXERCISE."ATH_NATION";
+alter virtual table HDLEXERCISE."ATH_NATION" add shared snapshot replica;
+select * from "ATH_NATION";
 
 

@@ -15,9 +15,7 @@ The requirements to follow the exercises in this repository are:
 
 ## Exercises
 
-**OR** Link to the PDF document stored in your github repo for example...
-
-Start the exercises [here](exercises/myPDFDoc.pdf).
+Start the exercises [here](exercises/DAT161_HandsOnExercise.pdf).
     
 ## How to obtain support
 

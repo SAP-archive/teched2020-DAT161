@@ -65,13 +65,13 @@ BEGIN
        DATEADDED DATETIME(''YYYYMMDDhhnnss''),
        FILLER(''\x09'') , 
        SOURCEURL )
-     USING FILE ''s3://hdltutorial/event_samp.CSV''
+     USING FILE ''s3://hcp-9de8781a-f3f2-4ed2-ac71-426d17095f88/event_samp.csv''
      DELIMITED BY ''\x09''
      STRIP RTRIM
      FORMAT CSV
-     --ACCESS_KEY_ID ''<your_access_key_id>''
-     --SECRET_ACCESS_KEY ''<your_secret_access_key>'' 
-     REGION ''us-east-2''
+     ACCESS_KEY_ID ''AKIAUXHXU4B7UICDPYHH''
+     SECRET_ACCESS_KEY ''guojSmvZTYU47k9bjlCOBC3EaVjKlvHr9T3cZ1P2'' 
+     REGION ''eu-central-1''
      ESCAPES OFF
      QUOTES OFF;    
 
@@ -104,13 +104,13 @@ BEGIN
        Amounts ,
        TranslationInfo ,
        ExtrasXML )
-     USING FILE ''s3://hdltutorial/event_samp.CSV''
+     USING FILE ''s3://hcp-9de8781a-f3f2-4ed2-ac71-426d17095f88/gkg_samp.csv''
      DELIMITED BY ''\x09''
      STRIP RTRIM
      FORMAT CSV
-     --ACCESS_KEY_ID ''<your_access_key_id>''
-     --SECRET_ACCESS_KEY ''<your_secret_access_key>'' 
-     REGION ''us-east-2''
+     ACCESS_KEY_ID ''AKIAUXHXU4B7UICDPYHH''
+     SECRET_ACCESS_KEY ''guojSmvZTYU47k9bjlCOBC3EaVjKlvHr9T3cZ1P2'' 
+     REGION ''eu-central-1''
      ESCAPES OFF
      QUOTES OFF;
 
@@ -132,14 +132,13 @@ BEGIN
        MentionDocTone ,
        MentionDocTranslationInfo ,
        Extras )
-     USING FILE ''s3://hdltutorial/event_samp.CSV''
+     USING FILE ''s3://hcp-9de8781a-f3f2-4ed2-ac71-426d17095f88/mentions_samp.csv''
      DELIMITED BY ''\x09''
      STRIP RTRIM
      FORMAT CSV
-     --ACCESS_KEY_ID ''<your_access_key_id>''
-     --SECRET_ACCESS_KEY ''<your_secret_access_key>'' 
-     REGION ''us-east-2''
+     ACCESS_KEY_ID ''AKIAUXHXU4B7UICDPYHH''
+     SECRET_ACCESS_KEY ''guojSmvZTYU47k9bjlCOBC3EaVjKlvHr9T3cZ1P2'' 
+     REGION ''eu-central-1''
      ESCAPES OFF
      QUOTES OFF;
-
 END');

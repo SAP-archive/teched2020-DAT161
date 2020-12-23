@@ -1,5 +1,7 @@
 # DAT161 - Introduction to SAP HANA Cloud
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/teched2020-DAT161)](https://api.reuse.software/info/github.com/SAP-samples/teched2020-DAT161)
+
 ## Description
 
 This repository contains the material for the SAP TechEd 2020 session called DAT161 - Introduction to SAP HANA Cloud. 
